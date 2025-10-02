@@ -10,14 +10,27 @@ jobs:
       run: echo "hello world"
     - name: Sending email
       if: ${{ always() }} #this ensures email is sent even if previous step fails, other types - success(), failure(), cancelled()
-      uses: devellany/send-mailer@v1.0.2
+      uses: dawidd6/action-send-mail@v3  #this action sends email using SMTP server
       with:
-        host: smtp.google.com
-      # Optional port (defaults to 465)
-        port: 465
-        account: ${{secrets.USER_NAME}}
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{secrets.USER_NAME}}  #secrets are encrypted environment variables created in repo settings
         password: ${{secrets.USER_PASSWORD}}
-        from: ${{secrets.USER_NAME}}
-        to: bhavi140@gmail.com
         subject: ${{github.job}} job has ${{github.job.status}}
         body: ${{github.job}} job in workflow ${{github.workflow}} of ${{github.repository}} has ${{github.job.status}}
+        to: bhavi140@gmail.com
+        
+     #uses: devellany/send-mailer@v1.0.2
+     # with:
+      #  host: smtp.google.com
+      # Optional port (defaults to 465)
+       # port: 465
+       # account: ${{secrets.USER_NAME}}
+       # password: ${{secrets.USER_PASSWORD}}
+       # from: ${{secrets.USER_NAME}}
+       # to: bhavi140@gmail.com
+        #subject: ${{github.job}} job has ${{github.job.status}}
+        #body: ${{github.job}} job in workflow ${{github.workflow}} of ${{github.repository}} has ${{github.job.status}}
+        
+
+      
