@@ -1,0 +1,23 @@
+name: sending email
+on: push
+
+jobs:
+  sendemail:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Printing
+      run: echo "hello world"
+    - name: Sending email
+      if: ${{ always() }} #this ensures email is sent even if previous step fails, other types - success(), failure(), cancelled()
+      uses: devellany/send-mailer@v1.0.2
+      with:
+        host: smtp.google.com
+      # Optional port (defaults to 465)
+        port: 465
+        account: ${{secrets.USER_NAME}}
+        password: ${{secrets.USER_PASSWORD}}
+        from: ${{secrets.USER_NAME}}
+        to: bhavi140@gmail.com
+        subject: ${{github.job}} job has ${{github.job.status}}
+        body: ${{github.job}} job in workflow ${{github.workflow}} of ${{github.repository}} has ${{github.job.status}}
