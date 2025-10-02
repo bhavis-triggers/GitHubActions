@@ -1,0 +1,16 @@
+name: Running through python script #local to remote commit(push) runs this job
+on: push
+
+jobs:
+  Hellooo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: cloning repo
+      uses: actions/checkout@v5 #this allows workflow to access repository
+    - name: Python setup
+      uses: actions/setup-python@v6   #with- specify version; uses: action specifying; run-particular command
+      with:
+        python-version: '3.13' 
+    - name: Running python script
+      run: python hello.py
