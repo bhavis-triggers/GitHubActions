@@ -1,0 +1,13 @@
+name: Practice
+on: push
+
+jobs:
+  hello-there:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Hello World
+      run: echo "Hi!! This is my first action"
+      
+    
+
