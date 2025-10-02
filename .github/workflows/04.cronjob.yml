@@ -1,7 +1,7 @@
 name: Scheduled timer job
-on:
-  schedule:
-    - cron: '* * * * *'  #cron syntax - min hour day month day-of-week
+on: push
+  #schedule:
+    #- cron: '* * * * *'  #cron syntax - min hour day month day-of-week
 
 jobs:
   cron:
