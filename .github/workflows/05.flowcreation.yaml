@@ -1,0 +1,16 @@
+name: Flow creation
+on:
+  push:
+    branches:
+      - feature-001
+
+jobs:
+  flowcreation:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Custom script
+      run: |
+        echo "This is a custom script step"
+        mkdir -p NewDir25
+        echo "Executed on branch: ${{ github.ref }}"
+        echo "Repository: ${{ github.repository }}"
