@@ -1,5 +1,5 @@
-name: node.js pipeline
-on:
-  push:
-    branches:
-      - hot-fix 
+#name: node.js pipeline
+#on:
+ # push:
+  #  branches:
+   #   - hot-fix 
